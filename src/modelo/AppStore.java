@@ -35,6 +35,28 @@ public class AppStore {
 
     }
 
+    public boolean comprar(String nombre, int cantidad){
+        Juego j = buscarJuego(nombre);
+        if(j != null){
+            return j.comprar(cantidad);
+        }
+        return false;
+    }
+    public double vender(String nombre, int cantidad){
+        Juego j = buscarJuego(nombre);
+        if(j != null){
+            if(j.vender(cantidad)){
+                return j.getPrecio()*cantidad;
+
+            }
+            return 0;
+        }
+        return 0;
+
+    }
+
+
+
 
     //no se usa pq los datos se ingresan de uno en uno
     /*public void setJuegos(Juego juegos[]) {
