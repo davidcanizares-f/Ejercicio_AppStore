@@ -19,11 +19,11 @@ public class MainTienda {
 
             switch(opc){
                 case 1:{
-                    System.out.println("Opcion 1");
+                    ingresarJuego();
                 }break;
 
                 case 2:{
-                    System.out.println("Opcion 0");
+                    imprimirJuegos();
                 }break;
 
                 case 3:{
@@ -68,10 +68,9 @@ public class MainTienda {
     }
     public static void ingresarJuego(){
         System.out.println("******* Ingreso de datos ********");
-        System.out.print("Ingrese el nombre: ");
-        String nombre = sc.nextLine();
-        System.out.print("Ingrese la categoria: ");
-        String categoria = sc.nextLine();
+        //System.out.print("Ingrese el nombre: ");
+        String nombre = Validacion.leerString("Ingrese el Nombre (No vacío ni nulo): ");
+        String categoria = Validacion.leerString("Ingrese la Categoría (No vacío ni nulo): ");
         System.out.print("Ingrese el tamanio: ");
         int tamanio = Integer.parseInt(sc.nextLine());
         System.out.print("Ingrese el precio: ");
@@ -83,5 +82,23 @@ public class MainTienda {
         }else{
             JOptionPane.showMessageDialog(null, "No fue Posible Agregar");
         }
+    }
+
+
+
+    public static void imprimirJuegos(){
+        Juego juegos[] = tienda.getJuegos();
+        for(Juego j : juegos){
+            if(j != null){
+                System.out.println(j);
+            }else{
+                System.out.println("No hay Elementos");
+                return;
+            }
+        }
+    }
+
+    public static void vender(){
+
     }
 }
