@@ -55,6 +55,29 @@ public class AppStore {
 
     }
 
+    public String juegoMasVendido(){
+        String nombre = "";
+        int mayor;
+        if(indice>=0){
+            nombre = juegos[0].getNombre();
+            mayor = juegos[0].getLicenciasVendidas();
+            for(Juego j : juegos){
+                if(j != null){
+                    if(j.getLicenciasVendidas() > mayor){
+                        mayor = j.getLicenciasVendidas();
+                        nombre = j.getNombre();
+                    }
+                }else{
+                    return nombre;
+                }
+
+
+            }
+        }
+        return nombre;
+
+    }
+
 
 
 
