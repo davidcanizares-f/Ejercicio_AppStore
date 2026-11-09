@@ -35,7 +35,7 @@ public class MainTienda {
                 }break;
 
                 case 5:{
-                    System.out.println("Opcion 4");
+                    vender();
                 }break;
 
                 case 6:{
@@ -99,6 +99,16 @@ public class MainTienda {
     }
 
     public static void vender(){
+        String nombre = Validacion.leerString("Ingrese el Nombre (No vacío ni nulo): ");
+        System.out.print("Ingrese la cantidad: ");
+        int cantidad = Integer.parseInt(sc.nextLine());
+        double totalVenta = tienda.vender(nombre, cantidad);
+        if(totalVenta == 0){
+            System.out.println("No fue posible realizar la venta");
+        }else{
+            System.out.println("Usted ha comprado " + cantidad + " licencias del juego " + nombre);
+            System.out.println("Valor a pagar: " + totalVenta);
+        }
 
     }
 }

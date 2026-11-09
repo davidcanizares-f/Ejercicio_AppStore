@@ -20,5 +20,6 @@ public class Validacion {
         return nombre;
     }
 
-    //leer numero positivo-mayor que algo - menor que algo-leer dentro de un rango
+    //Enteros: leer numero positivo-mayor que algo - menor que algo-leer dentro de un rango
+    //4 lecutras enteros-4float
 }
