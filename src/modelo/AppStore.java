@@ -8,6 +8,12 @@ public class AppStore {
     public AppStore(){
         juegos = new Juego[MAX];
         indice = -1;
+        //inicializarDatos(); -> Para precargar datos al arrancar el programa
+    }
+
+    public void inicialiarDatos(){
+        agregarJuego(new Juego("FIFA2026", "Deportes", 10, 70, 50));
+        agregarJuego(new Juego("Roblox", "Acción", 60, 75, 60));
     }
 
     public Juego[] getJuegos() {
