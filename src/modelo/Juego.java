@@ -89,13 +89,13 @@ public class Juego {
 
     @Override
     public String toString() {
-        return "Juego{" +
-                "nombre='" + nombre + '\'' +
-                ", categoria='" + categoria + '\'' +
-                ", tamanio=" + tamanio +
-                ", precio=" + precio +
-                ", licenciasDisponibles=" + licenciasDisponibles +
-                ", licenciasVendidas=" + licenciasVendidas +
-                '}';
+        return  "===================================================" + '\n' +
+                "> Nombre: " + nombre + '\n' +
+                "> Categoria: " + categoria + '\n' +
+                "> Tamanio: " + tamanio + " KB" +'\n' +
+                "> Precio: $" + precio + '\n' +
+                "> LicenciasDisponibles: " + licenciasDisponibles + '\n' +
+                "> LicenciasVendidas: " + licenciasVendidas + '\n' +
+                "===================================================";
     }
 }
