@@ -136,7 +136,7 @@ public class Validacion {
         int dato;
         System.out.print(mensaje);
         dato = leerInt(mensaje);
-        while(dato <= 0){
+        while(dato < 0){
             System.out.println("Lectura Inválida. Vuelva a Ingresar.");
             System.out.print(mensaje);
             dato = leerInt(mensaje);
