@@ -47,7 +47,7 @@ public class Validacion {
         double dato;
         System.out.print(mensaje);
         dato = leerDouble(mensaje);
-        while(dato <= 0){
+        while(dato < 0){
             System.out.println("Lectura Inválida. Vuelva a Ingresar.");
             System.out.println(mensaje);
             dato = leerDouble(mensaje);
