@@ -11,9 +11,12 @@ public class AppStore {
         //inicializarDatos(); -> Para precargar datos al arrancar el programa
     }
 
-    public void inicialiarDatos(){
+    public void inicializarDatos(){
         agregarJuego(new Juego("FIFA2026", "Deportes", 10, 70, 50));
         agregarJuego(new Juego("Roblox", "Acción", 60, 75, 60));
+    }
+    public boolean estaLlena() {
+        return indice >= MAX - 1;
     }
 
     public Juego[] getJuegos() {
@@ -61,9 +64,9 @@ public class AppStore {
 
     }
 
-    public String juegoMasVendido(){
+    /*public String juegoMasVendido(){
         String nombre = "";
-        int mayor;
+        int mayor = 0;
         if(indice>=0){
             nombre = juegos[0].getNombre();
             mayor = juegos[0].getLicenciasVendidas();
@@ -83,6 +86,17 @@ public class AppStore {
         }
         return nombre;
 
+    }*/
+    public String juegoMasVendido() {
+        String nombre = "";
+        int mayor = 0;
+        for (int i = 0; i <= indice; i++) {
+            if (juegos[i].getLicenciasVendidas() > mayor) {
+                mayor = juegos[i].getLicenciasVendidas();
+                nombre = juegos[i].getNombre();
+            }
+        }
+        return nombre;
     }
 
 

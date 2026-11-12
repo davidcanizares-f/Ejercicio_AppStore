@@ -12,7 +12,7 @@ public class MainTienda {
 
     public static void main() {
         int opc;
-        tienda.inicialiarDatos();
+        tienda.inicializarDatos();
         do {
             menu();
             opc = Validacion.leerIntRango("> Ingrese una opción: ", 1, 7);
@@ -76,8 +76,28 @@ public class MainTienda {
         System.out.println("6. Juego más vendido");
         System.out.println("7. Salir");
     }
-
     public static void ingresarJuego() {
+        System.out.println("******* Ingreso de datos ********");
+        if (tienda.estaLlena()) {
+            JOptionPane.showMessageDialog(null, "La tienda está llena. No es posible agregar más juegos.");
+            return;
+        }
+        String nombre = Validacion.leerString("Ingrese el Nombre (No vacío ni nulo): ");
+        if (tienda.buscarJuego(nombre) != null) {
+            JOptionPane.showMessageDialog(null, "Ya existe un juego con el nombre: " + nombre);
+            return;
+        }
+        String categoria = Validacion.leerString("Ingrese la Categoría (No vacío ni nulo): ");
+        int tamanio = Validacion.leerIntPositivo("Ingrese el tamanio: ");
+        double precio = Validacion.leerDoublePositivo("Ingrese el precio: ");
+        int licenciasDisponibles = Validacion.leerIntPositivo("Ingrese el stock inicial: ");
+        if (tienda.agregarJuego(new Juego(nombre, categoria, tamanio, precio, licenciasDisponibles))) {
+            JOptionPane.showMessageDialog(null, "Juego Ingresado con Éxito");
+        } else {
+            JOptionPane.showMessageDialog(null, "No fue Posible Agregar");
+        }
+    }
+    /*public static void ingresarJuego() {
         System.out.println("******* Ingreso de datos ********");
         String nombre = Validacion.leerString("Ingrese el Nombre (No vacío ni nulo): ");
         String categoria = Validacion.leerString("Ingrese la Categoría (No vacío ni nulo): ");
@@ -89,15 +109,19 @@ public class MainTienda {
         } else {
             JOptionPane.showMessageDialog(null, "No fue Posible Agregar");
         }
-    }
+    }*/
 
     public static void imprimirJuegos() {
         Juego juegos[] = tienda.getJuegos();
+        if (juegos[0] == null) {
+            System.out.println("No hay elementos.");
+            return;
+        }
         for (Juego j : juegos) {
             if (j != null) {
                 System.out.println(j);
             } else {
-                System.out.println("No hay elementos.");
+                System.out.println("No hay más elementos.");
                 return;
             }
 
@@ -117,6 +141,16 @@ public class MainTienda {
     public static void vender(){
         System.out.println("********* VENDER JUEGO *********");
         String nombre = Validacion.leerString("Ingrese el Nombre (No vacío ni nulo): ");
+        Juego j = tienda.buscarJuego(nombre);
+        if (j == null) {
+            JOptionPane.showMessageDialog(null, "No se encontró el juego: " + nombre);
+            return;
+        }
+        if (j.getLicenciasDisponibles() == 0) {
+            JOptionPane.showMessageDialog(null, "El juego " + j.getNombre() + " no tiene licencias disponibles.");
+            return;
+        }
+        System.out.println("Licencias disponibles de " + j.getNombre() + ": " + j.getLicenciasDisponibles());
         int cantidad = Validacion.leerIntPositivo("Ingrese la cantidad a vender: ");
         double totalVenta = tienda.vender(nombre, cantidad);
         if(totalVenta == 0){
@@ -133,6 +167,11 @@ public class MainTienda {
     public static void comprar(){
         System.out.println("********* COMPRAR JUEGO *********");
         String nombre = Validacion.leerString("Ingrese el Nombre (No vacío ni nulo): ");
+        Juego j = tienda.buscarJuego(nombre);
+        if (j == null) {
+            JOptionPane.showMessageDialog(null, "No se encontró el juego: " + nombre);
+            return;
+        }
         int cantidad = Validacion.leerIntPositivo("Ingrese la cantidad a comprar: ");
         if(tienda.comprar(nombre, cantidad)){
             JOptionPane.showMessageDialog(null, "Usted ha comprado " + cantidad + " licencias del juego " + nombre);
@@ -147,7 +186,7 @@ public class MainTienda {
         if(!juegoMasVendido.equals("")){
             JOptionPane.showMessageDialog(null, "El juego mas vendido es: " + juegoMasVendido);
         }else{
-            JOptionPane.showMessageDialog(null, "No hay elementos:");
+            JOptionPane.showMessageDialog(null, "No hay elementos.");
 
         }
 

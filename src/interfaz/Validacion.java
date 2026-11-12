@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Validacion {
     private static Scanner sc = new Scanner (System.in);
+
     public static String leerString(String mensaje){
         String nombre;
         System.out.print(mensaje);
@@ -52,6 +53,7 @@ public class Validacion {
             dato = leerDouble(mensaje);
 
         }
+        sc.nextLine();
         return dato;
     }
 
@@ -66,6 +68,7 @@ public class Validacion {
             dato = leerDouble(mensaje + "(Mayor que " + base + "): ");
 
         }
+        sc.nextLine();
         return dato;
     }
     //Leer double mayor o igual que algun valor
@@ -79,6 +82,7 @@ public class Validacion {
             dato = leerDouble(mensaje + "(Mayor o Igual que " + base + ")");
 
         }
+        sc.nextLine();
         return dato;
     }
 
@@ -93,6 +97,7 @@ public class Validacion {
             dato = leerDouble(mensaje + "(Menor que " + techo + "): ");
 
         }
+        sc.nextLine();
         return dato;
     }
     //Leer double menor o igual que algun valor
@@ -106,6 +111,7 @@ public class Validacion {
             dato = leerDouble(mensaje + "(Menor o Igual que " + techo + "): ");
 
         }
+        sc.nextLine();
         return dato;
     }
 
@@ -119,6 +125,7 @@ public class Validacion {
             System.out.print(mensaje + "(Entre " + base + "-" + techo + "): ");
             dato = leerDouble(mensaje + "(Entre " + base + "-" + techo + "): ");
         }
+        sc.nextLine();
         return dato;
     }
 
@@ -150,6 +157,7 @@ public class Validacion {
             dato = leerInt(mensaje + "(Mayor que " + base + "): ");
 
         }
+        sc.nextLine();
         return dato;
     }
     //Leer int mayor o igual que algun valor
@@ -163,11 +171,12 @@ public class Validacion {
             dato = leerInt(mensaje + "(Mayor o Igual que " + base + "): ");
 
         }
+        sc.nextLine();
         return dato;
     }
 
     //Leer int menor que algun valor
-    public static double leerIntMenor(String mensaje, int techo){
+    public static int leerIntMenor(String mensaje, int techo){
         int dato;
         System.out.print(mensaje + "(Menor que " + techo + "): ");
         dato = leerInt(mensaje + "(Menor que " + techo + "): ");
@@ -177,10 +186,11 @@ public class Validacion {
             dato = leerInt(mensaje + "(Menor que " + techo + "): ");
 
         }
+        sc.nextLine();
         return dato;
     }
     //Leer int menor o igual que algun valor
-    public static double leerIntMenorIgual(String mensaje, int techo){
+    public static int leerIntMenorIgual(String mensaje, int techo){
         int dato;
         System.out.print(mensaje + "(Menor o Igual que " + techo + "): ");
         dato = leerInt(mensaje + "(Menor o Igual que " + techo + "): ");
@@ -190,6 +200,7 @@ public class Validacion {
             dato = leerInt(mensaje + "(Menor o Igual que " + techo + "): ");
 
         }
+        sc.nextLine();
         return dato;
     }
 
